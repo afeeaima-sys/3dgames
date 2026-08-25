@@ -2,18 +2,45 @@
 <html lang="ms">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <meta
+      name="description"
+      content="Game Ular dan Tangga Matematik Bentuk Geometri 3D"
+    />
+
     <title>Game Ular & Tangga: Matematik 3D</title>
+
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="game-container">
+
+      <!-- =====================================================
+           TAJUK
+           ===================================================== -->
       <h1>Ular & Tangga: Bentuk Geometri 3D</h1>
 
+
+      <!-- =====================================================
+           SETUP PEMAIN
+           ===================================================== -->
       <div id="player-setup" class="setup-container">
+
         <div class="setup-row">
-          <label for="player-count">Pilih Bilangan Pemain: </label>
-          <select id="player-count" onchange="generateNameInputs()">
+          <label for="player-count">
+            Pilih Bilangan Pemain:
+          </label>
+
+          <select
+            id="player-count"
+            onchange="generateNameInputs()"
+          >
             <option value="1">1 Pemain</option>
             <option value="2" selected>2 Pemain</option>
             <option value="3">3 Pemain</option>
@@ -22,105 +49,252 @@
           </select>
         </div>
 
-        <div id="name-inputs-container" class="name-inputs-container"></div>
 
-        <button id="start-btn" onclick="startGame()">Mula Game</button>
+        <div
+          id="name-inputs-container"
+          class="name-inputs-container"
+        ></div>
+
+
+        <button
+          id="start-btn"
+          onclick="startGame()"
+        >
+          Mula Game
+        </button>
+
       </div>
 
-      <div class="main-layout" style="display: none">
-        <div id="board" class="board"></div>
 
-        <div id="controls" class="side-panel" style="display: none">
+      <!-- =====================================================
+           GAME AREA
+           ===================================================== -->
+      <div
+        class="main-layout"
+        style="display: none"
+      >
+
+        <!-- BOARD -->
+        <div
+          id="board"
+          class="board"
+        ></div>
+
+
+        <!-- =================================================
+             PANEL KAWALAN
+             ================================================= -->
+        <div
+          id="controls"
+          class="side-panel"
+          style="display: none"
+        >
+
           <div class="controls">
+
             <h2
               id="game-status"
-              style="color: #2c3e50; font-size: 20px; margin-bottom: 10px"
+              style="
+                color: #2c3e50;
+                font-size: 20px;
+                margin-bottom: 10px;
+              "
             >
               Sila masukkan nama pemain dahulu.
             </h2>
 
+
             <p
               id="dice-result"
-              style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px"
+              style="
+                font-size: 14px;
+                color: #7f8c8d;
+                margin-bottom: 5px;
+              "
             >
               Klik pada dadu untuk baling!
             </p>
 
-            <div class="dice-wrapper" onclick="rollDice()">
-              <div id="cube" class="cube">
-                <div class="face front"><span class="dot"></span></div>
-                <div class="face back">
-                  <span class="dot"></span><span class="dot"></span>
-                  <span class="dot"></span><span class="dot"></span>
-                  <span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="face top">
-                  <span class="dot"></span><span class="dot"></span
-                  ><span class="dot"></span>
-                </div>
-                <div class="face bottom">
-                  <span class="dot"></span><span class="dot"></span>
-                  <span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="face left">
-                  <span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="face right">
-                  <span class="dot"></span><span class="dot"></span>
+
+            <!-- =================================================
+                 DADU
+                 ================================================= -->
+            <div
+              class="dice-wrapper"
+              onclick="rollDice()"
+              role="button"
+              tabindex="0"
+              aria-label="Baling dadu"
+            >
+
+              <div
+                id="cube"
+                class="cube"
+              >
+
+                <div class="face front">
                   <span class="dot"></span>
-                  <span class="dot"></span><span class="dot"></span>
                 </div>
+
+                <div class="face back">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+
+                <div class="face top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+
+                <div class="face bottom">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+
+                <div class="face left">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+
+                <div class="face right">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+
               </div>
             </div>
 
-            <button id="restart-btn" onclick="restartGame()">
+
+            <!-- =================================================
+                 RESTART
+                 ================================================= -->
+            <button
+              id="restart-btn"
+              onclick="restartGame()"
+            >
               Mula Semula Game
             </button>
 
-            <div id="rules-box" class="rules-box">
+
+            <!-- =================================================
+                 PERATURAN
+                 ================================================= -->
+            <div
+              id="rules-box"
+              class="rules-box"
+            >
+
               <h3>📜 Syarat & Peraturan</h3>
+
               <ul>
+
                 <li>
-                  <strong>Giliran:</strong> Klik pada dadu 3D untuk bergerak ke
-                  hadapan mengikut jumlah mata dadu.
+                  <strong>Giliran:</strong>
+                  Klik pada dadu 3D untuk bergerak ke hadapan
+                  mengikut jumlah mata dadu.
                 </li>
+
                 <li>
-                  <strong>🪜 Tapak Tangga (ASAS):</strong> Jawab soalan kuiz
-                  geometri tahap asas. Jika <strong>BETUL</strong>, anda boleh
-                  memanjat naik. Jika <strong>SALAH</strong>, anda kekal di
-                  bawah.
+                  <strong>🪜 Tapak Tangga (ASAS):</strong>
+                  Jawab soalan kuiz geometri tahap asas.
+                  Jika <strong>BETUL</strong>, anda boleh
+                  memanjat naik. Jika <strong>SALAH</strong>,
+                  anda kekal di bawah.
                 </li>
+
                 <li>
-                  <strong>🐍 Kepala Ular (KBAT):</strong> Jawab soalan tahap
-                  KBAT / Gabungan. Jika <strong>BETUL</strong>, anda terselamat.
-                  Jika <strong>SALAH</strong>, anda akan jatuh ke ekor ular.
+                  <strong>🐍 Kepala Ular (KBAT):</strong>
+                  Jawab soalan tahap KBAT / Gabungan.
+                  Jika <strong>BETUL</strong>, anda terselamat.
+                  Jika <strong>SALAH</strong>, anda akan jatuh
+                  ke ekor ular.
                 </li>
+
                 <li>
-                  <strong>Petak 100:</strong> Pemain terawal yang berjaya
-                  mendarat tepat di petak 100 dikira sebagai
+                  <strong>Petak 100:</strong>
+                  Pemain terawal yang berjaya mendarat tepat
+                  di petak 100 dikira sebagai
                   <strong>PEMENANG</strong>!
                 </li>
+
               </ul>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
 
-    <div id="question-modal" class="modal">
-      <div class="modal-content" id="modal-content-box">
-        <h2 id="modal-topic">Soalan Matematik</h2>
-        <p id="question-text">Soalan akan muncul di sini...</p>
+
+    <!-- =======================================================
+         QUESTION MODAL
+         ======================================================= -->
+    <div
+      id="question-modal"
+      class="modal"
+    >
+
+      <div
+        class="modal-content"
+        id="modal-content-box"
+      >
+
+        <h2 id="modal-topic">
+          Soalan Matematik
+        </h2>
+
+        <p id="question-text">
+          Soalan akan muncul di sini...
+        </p>
+
         <div id="options-container"></div>
+
       </div>
+
     </div>
 
-    <div id="feedback-modal" class="modal">
-      <div id="feedback-content" class="modal-content">
-        <h2 id="feedback-title">Maklum Balas</h2>
-        <div id="feedback-emoji" style="font-size: 50px; margin: 15px 0">
+
+    <!-- =======================================================
+         FEEDBACK MODAL
+         ======================================================= -->
+    <div
+      id="feedback-modal"
+      class="modal"
+    >
+
+      <div
+        id="feedback-content"
+        class="modal-content"
+      >
+
+        <h2 id="feedback-title">
+          Maklum Balas
+        </h2>
+
+        <div
+          id="feedback-emoji"
+          style="
+            font-size: 50px;
+            margin: 15px 0;
+          "
+        >
           🎉
         </div>
+
         <p
           id="feedback-text"
           style="
@@ -130,6 +304,7 @@
             color: #2c3e50;
           "
         ></p>
+
         <button
           id="feedback-btn"
           class="option-btn"
@@ -137,9 +312,17 @@
         >
           TERUSKAN PERMAINAN ➔
         </button>
+
       </div>
+
     </div>
 
+
+    <!-- =======================================================
+         JAVASCRIPT
+         KEKALKAN SCRIPT ASAL
+         ======================================================= -->
     <script src="script.js"></script>
+
   </body>
 </html>
