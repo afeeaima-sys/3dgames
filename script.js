@@ -877,8 +877,4 @@ function drawVisuals() {
     board.appendChild(img);
   }
 
-  for (let start in ladders)
-    placeVisual(parseInt(start), ladders[start], "ladder.png", "ladder");
-  for (let start in snakes)
-    placeVisual(parseInt(start), snakes[start], "snake.png", "snake");
 }
